@@ -1,0 +1,15 @@
+# docker-compose_dev.yml
+version: "2"
+services:
+  app:
+    container_name: server_file_multi_blanco
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -u main.py pro
+    volumes:
+      - /usr/local/volumes/server_file_multi_blanco/uploads/:/app/uploads/:rw
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "4445:4445"
