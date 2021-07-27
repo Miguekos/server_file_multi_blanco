@@ -17,7 +17,7 @@ cors = CORS()
 cors.init_app(app, resource={r"/api/*": {"origins": "*"}})
 
 
-@app.route('/api/server/fileslist')
+@app.route('/api/servermultiblanco/fileslist')
 def list_files():
     try:
         insertarMongo = MongoConect(None)
@@ -31,7 +31,7 @@ def list_files():
         print(NameError)
         return "error controlado"
 
-@app.route('/api/server/files/<filename>')
+@app.route('/api/servermultiblanco/files/<filename>')
 def uploaded_file_static_test(filename):
     try:
         name = filename.split('.')[0]
@@ -45,7 +45,7 @@ def uploaded_file_static_test(filename):
     except:
         return "error controlado"
 
-@app.route('/api/server/upload', methods=['POST', "OPTIONS"])
+@app.route('/api/servermultiblanco/upload', methods=['POST', "OPTIONS"])
 def upload():
     try:
         # creando carpeta de la ruta si no existe
@@ -102,7 +102,7 @@ def upload():
                 print(result)
                 result = {
                     "name": "{}.{}".format(idregistro, ext),
-                    "url" : "{}:{}/api/server/files/{}.{}".format(os.getenv("URL"), os.getenv("PORT"),idregistro, ext)
+                    "url" : "{}:{}/api/servermultiblanco/files/{}.{}".format(os.getenv("URL"), os.getenv("PORT"),idregistro, ext)
                 }
             else:
                 result = "{}".format("Error controlado")
