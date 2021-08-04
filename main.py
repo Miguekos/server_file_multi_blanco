@@ -75,7 +75,7 @@ def upload():
             print("ruta: {}".format(ruta))
 
             # print("{}".format(secure_filename(f)))
-            f.save('{}.{}'.format(ruta, secure_filename(fname).split('.')[1]))
+            f.save('{}.{}'.format(ruta, secure_filename(fname).split('.')[-1]))
             g = request.files.get(fname)
             peso = len(g.read())
             print("Peso: ", f)
